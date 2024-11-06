@@ -1,4 +1,4 @@
-package com.pieropan.springdatamanytomany;
+package com.wrsg.springdatamanytomany;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

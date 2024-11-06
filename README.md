@@ -2,13 +2,13 @@
 
 ### Contexto
 
-Vamos considerar o seguinte contexto do projeto. Temos uma aplicação que possui *empresas* e *funcionários*. 
+Vamos considerar o seguinte contexto do projeto. Temos uma aplicação que possui *empresas* e *funcionários*.
 
 Ou seja, uma empresa poderá ter muitos funcionários assim como um funcionário pode fazer parte de muitas empresas.
 
 Veja abaixo como teremos o mapeamento da classe Empresa.
 
-![image](https://github.com/matheuspieropan/spring-data-many-to-many/assets/56203846/2d897335-b7de-4055-8d26-570d24633c8c)
+![image](https://github.com/matheuswrsg/spring-data-many-to-many/assets/56203846/2d897335-b7de-4055-8d26-570d24633c8c)
 
 
 ------------
@@ -17,7 +17,7 @@ A classe  possui um atributo List<Funcionario> funcionarios e nele estamos fazen
 
 Junto com essa anotação, também temos @JoinTable que funciona da seguinte forma:
 
-name = "*EMPRESA_FUNCIONARIO*" 
+name = "*EMPRESA_FUNCIONARIO*"
 
 Define o nome da tabela intermediária que será criada para representar a associação entre empresas e funcionários. Nesse caso, demos o nome de empresa_funcionario
 
@@ -41,7 +41,7 @@ Foi criada uma classe StarterConfig que foi anotada com @Configuration para ser 
 
 Esse @Bean tem como finalidade verificar se no banco de dados possui algum registro na tabela empresa. Se não houver ele cria um funcionário, uma empresa, atrela esse funcionário a esta empresa e salva no banco de dados.
 
-![image](https://github.com/matheuspieropan/spring-data-many-to-many/assets/56203846/be04fb1d-a84e-4b0a-a1e7-5c22b36d7f20)
+![image](https://github.com/matheuswrsg/spring-data-many-to-many/assets/56203846/be04fb1d-a84e-4b0a-a1e7-5c22b36d7f20)
 
 # Uso do @Bean
 
@@ -53,7 +53,7 @@ Vale ressaltar que esse código só funciona pois no mapeamento dos funcionarios
 
 Essa anoção faz com que o Spring Data persista primeiramente o funcionário para que então eu consiga salvar a empresa.  Se não houvesse essa anotação, teríamos que salvar primeiramente no banco de dados o usuário para depois salvarmos a empresa.
 
-# Testando aplicação 
+# Testando aplicação
 
 Foi implementado dois endpoints na aplicação (ambos são GET)
 
@@ -62,7 +62,7 @@ Foi implementado dois endpoints na aplicação (ambos são GET)
 *2. /empresas/com-funcionarios* <- Tem como finalidade retornar a empresa e os funcionários associados a ela.
 
 ------------
-O endpoint que retorna apenas as empresas não traz os dados do funcionário uma vez que o seu fetch é definido como LAZY ( default ). 
+O endpoint que retorna apenas as empresas não traz os dados do funcionário uma vez que o seu fetch é definido como LAZY ( default ).
 
 Ou seja, ao usar o método findAll() do CrudRepository, ele por default irá trazer todos os atributos da empresa, porém a lista de  funcionários não será carregada automaticamente. A menos que seja explicitamente solicitado.
 
@@ -70,7 +70,7 @@ Ou seja, ao usar o método findAll() do CrudRepository, ele por default irá tra
 
 Já o endpoint que retorna as empresas com os funcionários usa outra abordagem. No caso, temos uma implementação própria de como será feito o select.
 
-![image](https://github.com/matheuspieropan/spring-data-many-to-many/assets/56203846/46241432-7e15-4e7d-ac6f-1d509551d4ce)
+![image](https://github.com/matheuswrsg/spring-data-many-to-many/assets/56203846/46241432-7e15-4e7d-ac6f-1d509551d4ce)
 
 Como podemos ver acima, usamos o JOIN FETCH no atributo de funcionários para que o Spring ao trazer a lista de empresa, possa trazer também os seus funcionários.
 
@@ -80,10 +80,10 @@ Como podemos ver acima, usamos o JOIN FETCH no atributo de funcionários para qu
 
 Na classe Empresa, utilizamos a anotação @JsonManagedReference acima do atributo funcionarios, enquanto na classe Funcionario aplicamos a anotação @JsonBackReference no atributo empresas.
 
-![image](https://github.com/matheuspieropan/spring-data-many-to-many/assets/56203846/3001ccae-fef8-449e-b9b6-d9f1471d5c3c)
-![image](https://github.com/matheuspieropan/spring-data-many-to-many/assets/56203846/e415e9c1-f2ba-43a8-8d90-a79e9e0ad632)
+![image](https://github.com/matheuswrsg/spring-data-many-to-many/assets/56203846/3001ccae-fef8-449e-b9b6-d9f1471d5c3c)
+![image](https://github.com/matheuswrsg/spring-data-many-to-many/assets/56203846/e415e9c1-f2ba-43a8-8d90-a79e9e0ad632)
 
-Essas anotações têm como objetivo evitar uma possível exceção que poderia ocorrer em tempo de execução. 
+Essas anotações têm como objetivo evitar uma possível exceção que poderia ocorrer em tempo de execução.
 
 O problema ocorre ao consumir o endpoint que retorna as empresas com os funcionários. Nele, enfrentamos um problema conhecido como "loop infinito". A razão é que os funcionários possuem referências para as empresas, e, por sua vez, as empresas possuem referências para os funcionários, criando um ciclo interminável.
 

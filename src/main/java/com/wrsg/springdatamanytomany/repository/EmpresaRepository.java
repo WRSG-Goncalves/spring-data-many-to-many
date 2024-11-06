@@ -1,11 +1,12 @@
-package com.pieropan.springdatamanytomany.repository;
+package com.wrsg.springdatamanytomany.repository;
 
-import com.pieropan.springdatamanytomany.entity.Empresa;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import com.wrsg.springdatamanytomany.entity.Empresa;
 
 @Repository
 public interface EmpresaRepository extends CrudRepository<Empresa, Long> {

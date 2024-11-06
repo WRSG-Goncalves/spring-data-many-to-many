@@ -1,12 +1,13 @@
-package com.pieropan.springdatamanytomany.dto;
+package com.wrsg.springdatamanytomany.dto;
 
-import com.pieropan.springdatamanytomany.entity.Funcionario;
+import java.util.List;
+
+import com.wrsg.springdatamanytomany.entity.Funcionario;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor

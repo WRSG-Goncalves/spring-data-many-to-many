@@ -1,12 +1,13 @@
-package com.pieropan.springdatamanytomany.mapper;
+package com.wrsg.springdatamanytomany.mapper;
 
-import com.pieropan.springdatamanytomany.dto.EmpresaComFuncionarioResponse;
-import com.pieropan.springdatamanytomany.dto.EmpresaResponse;
-import com.pieropan.springdatamanytomany.entity.Empresa;
+import java.util.List;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-import java.util.List;
+import com.wrsg.springdatamanytomany.dto.EmpresaComFuncionarioResponse;
+import com.wrsg.springdatamanytomany.dto.EmpresaResponse;
+import com.wrsg.springdatamanytomany.entity.Empresa;
 
 @Mapper
 public interface EmpresaMapper {

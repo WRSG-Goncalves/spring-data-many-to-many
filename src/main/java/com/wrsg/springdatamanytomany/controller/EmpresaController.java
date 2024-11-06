@@ -1,15 +1,16 @@
-package com.pieropan.springdatamanytomany.controller;
+package com.wrsg.springdatamanytomany.controller;
 
-import com.pieropan.springdatamanytomany.dto.EmpresaComFuncionarioResponse;
-import com.pieropan.springdatamanytomany.dto.EmpresaResponse;
-import com.pieropan.springdatamanytomany.service.EmpresaService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import com.wrsg.springdatamanytomany.dto.EmpresaComFuncionarioResponse;
+import com.wrsg.springdatamanytomany.dto.EmpresaResponse;
+import com.wrsg.springdatamanytomany.service.EmpresaService;
 
 @RestController
 @RequestMapping("/empresa")

@@ -1,4 +1,4 @@
-package com.pieropan.springdatamanytomany.entity;
+package com.wrsg.springdatamanytomany.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Entity;

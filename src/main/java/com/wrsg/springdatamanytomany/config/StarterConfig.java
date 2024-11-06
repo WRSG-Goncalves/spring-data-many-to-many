@@ -1,13 +1,14 @@
-package com.pieropan.springdatamanytomany.config;
+package com.wrsg.springdatamanytomany.config;
 
-import com.pieropan.springdatamanytomany.entity.Empresa;
-import com.pieropan.springdatamanytomany.entity.Funcionario;
-import com.pieropan.springdatamanytomany.repository.EmpresaRepository;
+import java.util.Collections;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.Collections;
+import com.wrsg.springdatamanytomany.entity.Empresa;
+import com.wrsg.springdatamanytomany.entity.Funcionario;
+import com.wrsg.springdatamanytomany.repository.EmpresaRepository;
 
 @Configuration
 public class StarterConfig {

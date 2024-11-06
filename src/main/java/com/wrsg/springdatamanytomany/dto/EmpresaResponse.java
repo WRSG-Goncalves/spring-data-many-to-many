@@ -1,4 +1,4 @@
-package com.pieropan.springdatamanytomany.dto;
+package com.wrsg.springdatamanytomany.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
